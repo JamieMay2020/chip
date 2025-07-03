@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .links {
+            margin-bottom: 30px;
+        }
+
+        .links a {
+            color: blue;
+            margin: 0 15px;
+        }
+
+        .contract {
+            font-family: monospace;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>TOKEN NAME</h1>
+    
+    <div class="links">
+        <a href="https://pump.fun" target="_blank">pump.fun</a>
+        <a href="https://x.com" target="_blank">x.com</a>
+    </div>
+    
+    <div class="contract" onclick="copyContract()">
+        CA: YourSolanaContractAddressHere1234567890
+    </div>
+    
+    <img src="https://via.placeholder.com/400x400" alt="Token Image">
+
+    <script>
+        function copyContract() {
+            const text = document.querySelector('.contract').textContent.replace('CA: ', '');
+            navigator.clipboard.writeText(text);
+        }
+    </script>
+</body>
+</html>
