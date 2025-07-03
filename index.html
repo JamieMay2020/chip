@@ -3,61 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Name</title>
+    <title>DMC</title>
     <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            color: black;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #FFF8E7;
+            min-height: 100vh;
+            color: #8B4513;
             text-align: center;
             padding: 40px 20px;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out;
         }
 
         h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
+            font-size: 72px;
+            margin-bottom: 30px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            color: #8B4513;
+            text-shadow: none;
         }
 
         .links {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .links a {
-            color: blue;
-            margin: 0 15px;
+            color: #D2691E;
+            margin: 0 25px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #D2691E;
+            transition: width 0.3s ease;
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+
+        .links a:hover {
+            transform: translateY(-2px);
         }
 
         .contract {
-            font-family: monospace;
-            margin-bottom: 30px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 50px;
             cursor: pointer;
+            font-size: 16px;
+            color: #A0522D;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        img {
-            max-width: 400px;
+        .contract:hover {
+            color: #8B4513;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            grid-auto-flow: dense;
+        }
+
+        .gallery img {
             width: 100%;
             height: auto;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            border: 3px solid #FFE4B5;
+        }
+
+        .gallery img:nth-child(1) { animation-delay: 0.1s; }
+        .gallery img:nth-child(2) { animation-delay: 0.2s; }
+        .gallery img:nth-child(3) { animation-delay: 0.3s; }
+        .gallery img:nth-child(4) { animation-delay: 0.4s; }
+        .gallery img:nth-child(5) { animation-delay: 0.5s; }
+        .gallery img:nth-child(6) { animation-delay: 0.6s; }
+        .gallery img:nth-child(7) { animation-delay: 0.7s; }
+        .gallery img:nth-child(8) { animation-delay: 0.8s; }
+
+        .gallery img:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.3);
+            border-color: #D2691E;
+        }
+
+        .gallery .landscape {
+            grid-column: span 2;
+        }
+
+        .copied {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: #D2691E;
+            color: #FFF8E7;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .copied.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+            }
+            .links a {
+                font-size: 18px;
+                margin: 0 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>TOKEN NAME</h1>
-    
-    <div class="links">
-        <a href="https://pump.fun" target="_blank">pump.fun</a>
-        <a href="https://x.com" target="_blank">x.com</a>
+    <div class="container">
+        <h1>Dramatic Chipmunk</h1>
+        
+        <div class="links">
+            <a href="https://pump.fun" target="_blank">pump.fun</a>
+            <a href="https://x.com/chipmunkmeme" target="_blank">x.com</a>
+        </div>
+        
+        <div class="contract" onclick="copyContract()">
+            CA: 
+        </div>
+        
+        <div class="gallery">
+            <img src="chipmoon.png" alt="Token Image 1" class="landscape">
+            <img src="chiphot.png" alt="Token Image 2">
+            <img src="chipwork.png" alt="Token Image 3">
+            <img src="chipsuit.png" alt="Token Image 4">
+            <img src="chipaura.png" alt="Token Image 5">
+            <img src="chip4.png" alt="Token Image 6">
+            <img src="c" alt="Token Image 7">
+            <img src="https://via.placeholder.com/600x400" alt="Token Image 8" class="landscape">
+        </div>
     </div>
-    
-    <div class="contract" onclick="copyContract()">
-        CA: YourSolanaContractAddressHere1234567890
-    </div>
-    
-    <img src="https://via.placeholder.com/400x400" alt="Token Image">
+
+    <div class="copied" id="copied">Copied!</div>
 
     <script>
         function copyContract() {
             const text = document.querySelector('.contract').textContent.replace('CA: ', '');
             navigator.clipboard.writeText(text);
+            
+            const notification = document.getElementById('copied');a
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2500);
         }
     </script>
 </body>
